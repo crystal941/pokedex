@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center">Browse the original 151 Pokémons</h2>
+        <table class="table table-bordered mt-4">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Height (Decimetres)</th>
+                <th>Weight (Hectograms)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for pokemon in pokemon_data %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('browse_bp.pokemon_detail', id_or_name=pokemon.id) }}">
+                            {{ pokemon.id }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('browse_bp.pokemon_detail', id_or_name=pokemon.name) }}">
+                            {{ pokemon.name.capitalize() }}
+                        </a>
+                    </td>
+                    <td>
+                        {% for type in pokemon.types %}
+                            {{ type.capitalize() }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ pokemon.height }}</td>
+                    <td>{{ pokemon.weight }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination Controls -->
+        <nav>
+            <ul class="pagination justify-content-center">
+                {% if page > 1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page - 1 }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+                {% for p in range(1, total_pages + 1) %}
+                    <li class="page-item {% if p == page %}active{% endif %}">
+                        <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                    </li>
+                {% endfor %}
+                {% if page < total_pages %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page + 1 }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
