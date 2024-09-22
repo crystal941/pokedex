@@ -6,11 +6,46 @@
         <table class="table table-bordered mt-4">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Height (Decimetres)</th>
-                <th>Weight (Hectograms)</th>
+                <th>
+                    <a href="?sort=id&order={{ 'desc' if sort == 'id' and order == 'asc' else 'asc' }}">
+                        ID
+                        {% if sort == 'id' %}
+                            <span>{{ '▲' if order == 'asc' else '▼' }}</span>
+                        {% endif %}
+                    </a>
+                </th>
+                <th>
+                    <a href="?sort=name&order={{ 'desc' if sort == 'name' and order == 'asc' else 'asc' }}">
+                        Name
+                        {% if sort == 'name' %}
+                            <span>{{ '▲' if order == 'asc' else '▼' }}</span>
+                        {% endif %}
+                    </a>
+                </th>
+                <th>
+                    <a href="?sort=type&order={{ 'desc' if sort == 'type' and order == 'asc' else 'asc' }}">
+                        Type
+                        {% if sort == 'type' %}
+                            <span>{{ '▲' if order == 'asc' else '▼' }}</span>
+                        {% endif %}
+                    </a>
+                </th>
+                <th>
+                    <a href="?sort=height&order={{ 'desc' if sort == 'height' and order == 'asc' else 'asc' }}">
+                        Height (Decimetres)
+                        {% if sort == 'height' %}
+                            <span>{{ '▲' if order == 'asc' else '▼' }}</span>
+                        {% endif %}
+                    </a>
+                </th>
+                <th>
+                    <a href="?sort=weight&order={{ 'desc' if sort == 'weight' and order == 'asc' else 'asc' }}">
+                        Weight (Hectograms)
+                        {% if sort == 'weight' %}
+                            <span>{{ '▲' if order == 'asc' else '▼' }}</span>
+                        {% endif %}
+                    </a>
+                </th>
             </tr>
             </thead>
             <tbody>
