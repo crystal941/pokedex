@@ -2,13 +2,15 @@
 
 {% block content %}
     <div class="container mt-5 text-center">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Pokémon Logo" class="img-fluid mb-4"
+             style="max-width: 300px;">
         <h2>Welcome to the Pokémon Database</h2>
         <div class="mb-3" style="padding-top: 20px">
-            <p>This is a simple Flask app utilizing the <a href="https://pokeapi.co">PokéAPI</a>.</p>
+            <p>This is a simple Flask app querying data from the <a href="https://pokeapi.co">PokéAPI</a>.</p>
             <p>Explore the fascinating world of Pokémon, discover their types, abilities, and stats, and learn more
                 about your favorite characters. </p>
             <p>Whether you're a long-time fan or new to the Pokémon universe, this app
-                provides a user-friendly interface to browse through the original 151 Pokémon.</p>
+                provides a simple interface to browse through the original 151 Pokémon.</p>
 
             <a href="{{ url_for('home_bp.browse_pokemons') }}" class="btn btn-primary">
                 Start Exploring Pokémons</a>
