@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">{{ pokemon.name.capitalize() }}</h1>
+    <div class="text-center">
+        <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" class="img-fluid" style="max-width: 300px;">
+    </div>
+
+    <div class="mt-4">
+        <h2>Base Stats:</h2>
+        <ul class="list-group">
+            {% for stat in pokemon.stats %}
+            <li class="list-group-item">
+                {{ stat.stat.name.capitalize() }}: {{ stat.base_stat }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <h2>Abilities:</h2>
+        <ul class="list-group">
+            {% for ability in pokemon.abilities %}
+            <li class="list-group-item">
+                {{ ability.ability.name.capitalize() }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a href="{{ url_for('home_bp.home') }}" class="btn btn-primary">Back to Home</a>
+        <a href="{{ url_for('home_bp.browse_pokemons') }}" class="btn btn-secondary">Back to Browse</a>
+    </div>
+</div>
+{% endblock %}
